@@ -21,12 +21,16 @@
 }
 
 .principal {
-    display: grid;
-    grid-template-columns: 300px calc(100% - 300px);
-    grid-template-rows: auto;
-    grid-template-areas: "menu header"
-        "menu content"
-        "menu footer";
+    // display: grid;
+    // grid-template-columns: 300px calc(100% - 300px);
+    // grid-template-rows: auto;
+    // grid-template-areas: "menu header"
+    //     "menu content"
+    //     "menu footer";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
     .header {
         grid-area: header;
@@ -36,6 +40,18 @@
     .menu {
         grid-area: menu;
         @include contenedor($bgColor: #00b847);
+        position: fixed;
+        left: -100vw;
+        top: 0px;
+        width: 80vw;
+        height: 100vh;
+        transition-property: left;
+        transition-duration: 500ms;
+        transition-timing-function: linear;
+
+        &.open {
+            left: 0px;
+        }
     }
 
     .content {
