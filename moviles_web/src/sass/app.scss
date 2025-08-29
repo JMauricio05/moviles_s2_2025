@@ -40,6 +40,7 @@
     .menu {
         grid-area: menu;
         @include contenedor($bgColor: #00b847);
+        flex-direction: column;
         position: fixed;
         left: -100vw;
         top: 0px;
@@ -51,6 +52,18 @@
 
         &.open {
             left: 0px;
+        }
+
+        div {
+            position: relative;
+            @include contenedor($bgColor: rgba(255, 255, 255, 0));
+            height: 100%;
+
+            button.close-btn{
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
         }
     }
 

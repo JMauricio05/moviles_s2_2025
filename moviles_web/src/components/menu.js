@@ -1,4 +1,4 @@
-const itemMenu = (text) => {
+const itemMenu = (text, onItemClick) => {
     const li = document.createElement('li');
     const button = document.createElement('button');
 
@@ -8,17 +8,20 @@ const itemMenu = (text) => {
     button.appendChild(span);
 
     button.innerHTML += text;
+    button.addEventListener('click', () => onItemClick(text));
     //button.innerHTML = button.innerHTML + text;
     li.appendChild(button);
     return li;
 };
 
-const menu = () => {
+const menu = (navegateTo) => {
     const nav = document.createElement('nav');
     nav.setAttribute('id', 'menuPrincipal');
     nav.classList.add('menu');
 
     const closeBtn = document.createElement('button');
+    closeBtn.classList.add('close-btn');
+
     const iconClose = document.createElement('span');
     iconClose.classList.add('material-symbols-outlined');
     iconClose.textContent = 'close';
@@ -30,14 +33,21 @@ const menu = () => {
     const list = document.createElement('ul');
     const options = ['Responsive', 'Ionic', 'Reactnative', 'Android'];
     for (let item of options) {
-        list.appendChild(itemMenu(item));
+        list.appendChild(itemMenu(item, (text) => {
+            navegateTo(text);
+            nav.classList.remove('open');
+        }));
     }
     // list.appendChild(itemMenu('Responsive'));
     // list.appendChild(itemMenu('Ionic'));
     // list.appendChild(itemMenu('Reactnative'));
     // list.appendChild(itemMenu('Android'));
-    nav.appendChild(closeBtn);
-    nav.appendChild(list);
+
+    const div = document.createElement('div');
+    div.appendChild(closeBtn);
+    div.appendChild(list);
+
+    nav.appendChild(div);
     return nav;
 };
 
