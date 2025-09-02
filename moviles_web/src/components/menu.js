@@ -31,7 +31,13 @@ const menu = (navegateTo) => {
     });
 
     const list = document.createElement('ul');
-    const options = ['Responsive', 'Ionic', 'Reactnative', 'Android'];
+    const options = [
+        'Responsive',
+        'Ionic',
+        'Reactnative',
+        'Android',
+        'Consultar logs'
+    ];
     for (let item of options) {
         list.appendChild(itemMenu(item, (text) => {
             navegateTo(text);

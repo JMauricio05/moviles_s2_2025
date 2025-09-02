@@ -1,3 +1,5 @@
+import ejemplo from '../services/endpoints.js';
+
 const inicioPage = ()=>{
     const contentPage = document.createElement('section');
 
@@ -5,6 +7,8 @@ const inicioPage = ()=>{
     titulo.textContent = 'Aplicaciones web responsive';
 
     contentPage.appendChild(titulo);
+
+    ejemplo();
     return contentPage;
 }
 

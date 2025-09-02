@@ -9,6 +9,7 @@ import inicioPage from './pages/inicioPage.js';
 import ionicPage from './pages/ionicPage.js';
 import reactnativePage from './pages/reactnativePage.js';
 import androidPage from './pages/androidPage.js';
+import logPage from './pages/logPage.js';
 
 const routesPages = (namePage) => {
     const content = document.getElementById('content-page');
@@ -23,10 +24,23 @@ const routesPages = (namePage) => {
         case 'Android':
             content.appendChild(androidPage());
             break;
+        case 'Consultar logs':
+            content.appendChild(logPage());
+            break;
         default: //'Responsive' | 'defaul'
             content.appendChild(inicioPage());
             break;
     }
+    // localStorage.setItem('click_menu', namePage);
+    // const clickLocal = localStorage.getItem('click_menu');
+    // console.log(clickLocal);
+    sessionStorage.setItem('click_menu', namePage);
+    const clickLocal = sessionStorage.getItem('click_menu');
+    console.log(clickLocal);
+    console.log(localStorage.length)
+    console.log(localStorage.key(0))
+    console.log(localStorage.key(1))
+    console.log(localStorage.getItem(localStorage.key(1)))
 }
 
 const page = document.getElementById('page');
